@@ -1,0 +1,32 @@
+﻿@model IEnumerable<GreatPlacesInPh.ViewModels.PlaceViewModel>
+
+<div class="row">
+    <div class="col-md-12">        
+        @Html.ActionLink("I've found an awesome place!", "Create", "Places", new { }, new { @class = "btn btn-primary btn-sm" })
+       <!-- Uncomment this button to demo CSRF -->
+        @if (User.Identity.IsAuthenticated)
+        {
+            @Html.ActionLink("You've won a prize!", "Index", "Prize", new { }, new { @class = "btn btn-primary btn-lg"} )
+        }     
+    </div>
+</div>
+<br />
+
+@foreach (var item in Model)
+{ 
+    <div class="panel panel-default">
+        <div class="panel-body">
+            <div class="row">
+                <div class="col-md-4">
+                    <img src="@item.ImageUrl" class="img-responsive img-rounded img-resize" />
+                </div>
+                <div class="col-md-8">
+                    <h3>@item.Name</h3>
+                    <p>By @item.User.UserName</p><p></p>
+                    <p>@item.Review</p>
+                    <a href="/Places/Details/@item.PlaceId">See Comments</a>
+                </div>
+            </div>
+        </div>
+    </div>
+}

